@@ -13,7 +13,6 @@ class _SecondViewState extends State<SecondView> {
 
   @override
   Widget build(BuildContext context) {
-    print("A");
     return Scaffold(
       appBar: AppBar(
         title: Text("data"),
