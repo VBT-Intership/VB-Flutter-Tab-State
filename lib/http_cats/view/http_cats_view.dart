@@ -18,7 +18,7 @@ class HttpCatsView extends HttpCatsViewModel {
     return Card(
       margin: EdgeInsets.all(20),
       child: ListTile(
-        title: Image.network(cat.imageUrl),
+        title: SizedBox(height: MediaQuery.of(context).size.height * 0.2, child: Image.network(cat.imageUrl)),
         subtitle: Text(cat.description),
         trailing: Text(cat.statusCode.toString()),
       ),
