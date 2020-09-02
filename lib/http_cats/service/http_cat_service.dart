@@ -35,7 +35,7 @@ class HttpCatService extends IHttpCatService {
         }
       }
     } catch (e) {
-      return ErrorModel("see");
+      return ErrorModel(e.text);
     }
   }
 
@@ -46,7 +46,7 @@ class HttpCatService extends IHttpCatService {
     } else if (jsonBody is Map) {
       return model.fromJson(jsonBody);
     } else {
-      return jsonBody;
+      return throw ErrorModel(body);
     }
   }
 }
