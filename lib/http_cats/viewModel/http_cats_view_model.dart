@@ -1,12 +1,9 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:s2l1/http_cats/model/http_cat_model.dart';
 import 'package:s2l1/http_cats/service/IHttpCatService.dart';
 import 'package:s2l1/http_cats/service/http_cat_service.dart';
+
 import '../view/http_cats.dart';
-import 'package:http/http.dart' as http;
 
 abstract class HttpCatsViewModel extends State<HttpCats> {
   // Add your state and logic here
@@ -19,7 +16,7 @@ abstract class HttpCatsViewModel extends State<HttpCats> {
   void initState() {
     super.initState();
     httpCatService = HttpCatService();
-    callItems();
+//    callItems();
   }
 
   @override

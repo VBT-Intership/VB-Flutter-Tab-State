@@ -14,8 +14,13 @@ class HttpCatService extends IHttpCatService {
   final baseUrl2 = "https://jsonplaceholder.typicode.com";
 
   @override
-  Future<List<HttpCatModel>> getHttpList() async {
-    return await _httpGet<HttpCatModel>("$baseUrl/http.json", HttpCatModel());
+  Future<dynamic> getHttpList() async {
+    dynamic fetchedData = await _httpGet<BaseModel>(
+        "$baseUrl/http/0/statusCode.json", HttpCatModel());
+    if (fetchedData is List)
+      return fetchedData.cast<HttpCatModel>().toList();
+    else
+      return fetchedData;
   }
 
   @override
@@ -30,12 +35,13 @@ class HttpCatService extends IHttpCatService {
         switch (response.statusCode) {
           case HttpStatus.ok:
             return _bodyParser<T>(response.body, model);
+            break;
           default:
             throw ErrorModel(response.body);
         }
       }
     } catch (e) {
-      return ErrorModel("see");
+      return ErrorModel("VB <3");
     }
   }
 
