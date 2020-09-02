@@ -1,4 +1,6 @@
-class HttpCatModel {
+import 'package:s2l1/http_cats/model/base_model.dart';
+
+class HttpCatModel extends BaseModel<HttpCatModel> {
   String description;
   String imageUrl;
   int statusCode;
@@ -17,5 +19,10 @@ class HttpCatModel {
     data['imageUrl'] = this.imageUrl;
     data['statusCode'] = this.statusCode;
     return data;
+  }
+
+  @override
+  HttpCatModel fromJson(Map<String, Object> json) {
+    return HttpCatModel.fromJson(json);
   }
 }
