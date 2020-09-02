@@ -63,7 +63,11 @@ class SampleViewView extends SampleViewViewModel {
   OutlineButton get buildOutlineButtonLogin {
     return OutlineButton(
       onPressed: () {},
-      child: Text("data"),
+      child: Text(
+        "data",
+        style: context.theme.textTheme.overline
+            .copyWith(fontWeight: FontWeight.bold, fontSize: context.theme.textTheme.headline1.fontSize),
+      ),
     );
   }
 

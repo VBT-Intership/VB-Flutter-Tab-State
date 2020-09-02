@@ -3,18 +3,22 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:s2l1/http_cats/model/http_cat_model.dart';
+import 'package:s2l1/http_cats/service/IHttpCatService.dart';
+import 'package:s2l1/http_cats/service/http_cat_service.dart';
 import '../view/http_cats.dart';
 import 'package:http/http.dart' as http;
 
 abstract class HttpCatsViewModel extends State<HttpCats> {
   // Add your state and logic here
-  final baseUrl = "https://hwasampleapi.firebaseio.com";
   bool isLoading = false;
   List<HttpCatModel> httpCats = [];
+
+  IHttpCatService httpCatService;
 
   @override
   void initState() {
     super.initState();
+    httpCatService = HttpCatService();
     callItems();
   }
 
@@ -53,13 +57,6 @@ abstract class HttpCatsViewModel extends State<HttpCats> {
   }
 
   Future<void> _getHttpCats() async {
-    final response = await http.get("$baseUrl/http.json");
-    switch (response.statusCode) {
-      case HttpStatus.ok:
-        final jsonBody = jsonDecode(response.body);
-        if (jsonBody is List) httpCats = jsonBody.map((e) => HttpCatModel.fromJson(e)).toList();
-        break;
-      default:
-    }
+    httpCats = await httpCatService.getHttpList();
   }
 }
