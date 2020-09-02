@@ -20,7 +20,7 @@ class HttpCatService extends IHttpCatService {
 
   @override
   Future<List<TaskModel>> getTaskList() async {
-    return await _httpGet<TaskModel>("$baseUrl2/todos", TaskModel());
+    return await _httpGet<TaskModel>("$baseUrl2/user", TaskModel());
   }
 
   Future<dynamic> _httpGet<T extends BaseModel>(String path, T model) async {
