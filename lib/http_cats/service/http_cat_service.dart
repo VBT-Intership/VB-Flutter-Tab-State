@@ -8,6 +8,7 @@ import 'package:s2l1/http_cats/model/task_model.dart';
 
 import '../model/http_cat_model.dart';
 import 'IHttpCatService.dart';
+// author : @VB10
 
 class HttpCatService extends IHttpCatService {
   final baseUrl = "https://hwasampleapi.firebaseio.com";
@@ -20,7 +21,7 @@ class HttpCatService extends IHttpCatService {
 
   @override
   Future<List<TaskModel>> getTaskList() async {
-    return await _httpGet<TaskModel>("$baseUrl2/user", TaskModel());
+    return await _httpGet<TaskModel>("$baseUrl2/todos", TaskModel());
   }
 
   Future<dynamic> _httpGet<T extends BaseModel>(String path, T model) async {
@@ -41,6 +42,10 @@ class HttpCatService extends IHttpCatService {
 
   dynamic _bodyParser<T extends BaseModel>(String body, BaseModel model) {
     final jsonBody = jsonDecode(body);
+// print("a");
+
+    print("Hello");
+
     if (jsonBody is List) {
       return jsonBody.map((e) => model.fromJson(e)).cast<T>().toList();
     } else if (jsonBody is Map) {
