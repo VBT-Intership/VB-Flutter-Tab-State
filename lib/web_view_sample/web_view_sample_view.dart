@@ -20,8 +20,8 @@ class WebViewSampleView extends WebViewSampleViewModel {
           <!--You can pretty much put any html in here!-->
         </div>
   """;
-  WebViewController controller;
 
+  WebViewController controller;
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
 
   @override
